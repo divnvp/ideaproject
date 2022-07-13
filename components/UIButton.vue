@@ -3,7 +3,7 @@
     <button
       class="button"
       :disabled="disabled"
-      :style="{ backgroundColor: color }"
+      :style="{ backgroundColor: color, height: height }"
     >
       {{ title }}
 
@@ -17,9 +17,11 @@ export default {
   name: "UIButton",
 
   props: {
-    color: { type: String },
-    title: { type: String },
-    disabled: { type: Boolean },
+    color: String,
+    title: String,
+    disabled: Boolean,
+    required: Boolean,
+    height: String
   }
 }
 </script>
