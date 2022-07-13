@@ -1,6 +1,9 @@
 <template>
   <div>
-    <select class="select">
+    <select
+      class="select"
+      :style="{ height }"
+    >
       <option selected>По умолчанию</option>
     </select>
   </div>
@@ -11,7 +14,7 @@ export default {
   name: "UISelector",
 
   props: {
-
+    height: String
   }
 }
 </script>
@@ -27,5 +30,6 @@ export default {
   border-radius: 4px;
 
   color: #B4B4B4;
+  font-size: 12px;
 }
 </style>
