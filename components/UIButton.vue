@@ -11,8 +11,8 @@ export default {
   name: "UIButton",
 
   props: {
-    title: { type: String, required: true },
-    disabled: { type: Boolean, required: true },
+    title: { type: String },
+    disabled: { type: Boolean },
   }
 }
 </script>
