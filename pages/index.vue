@@ -14,7 +14,7 @@ export default {
 <style>
 body {
   padding: 0;
-  background-color: #FFFEFB;
+  background-color: rgba(255, 254, 251, 0.8);;
   font-family: Arial, serif;
 }
 </style>

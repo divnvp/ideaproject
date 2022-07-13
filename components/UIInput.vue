@@ -24,6 +24,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+  width: 284px;
 
   &__span {
     font-size: 10px;
@@ -33,7 +34,7 @@ export default {
 
   &__input {
     margin-top: 4px;
-    padding: 16px;
+    padding: 8px 16px;
 
     border: none;
     background: #FFFEFB;

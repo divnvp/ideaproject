@@ -16,6 +16,7 @@
               <UIInput
                 title="Наименование товара"
                 placeholder="Введите наименование товара"
+                style="margin-top: 8px"
               />
 
               <UITextarea
@@ -103,13 +104,18 @@ export default {
   }
 
   &-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     position: sticky;
     top: 0;
 
-    width: 332px;
-    height: 440px;
+    width: calc(332px - 24px * 2);
+    height: calc(440px - 24px);
 
     padding: 24px;
+    margin-right: 8px;
 
     &__button {
       display: flex;
@@ -131,7 +137,7 @@ export default {
     cursor: pointer;
 
     &__card {
-      margin: 8px 16px;
+      margin: 8px 8px;
 
       width: 332px;
       height: 423px;
