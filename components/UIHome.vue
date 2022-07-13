@@ -6,7 +6,10 @@
           Добавление товара
         </span>
 
-        <UISelector class="home-selector" />
+        <UISelector
+          class="home-selector"
+          height="36px"
+        />
       </div>
 
       <div class="home-row">
@@ -16,7 +19,7 @@
               <UIInput
                 title="Наименование товара"
                 placeholder="Введите наименование товара"
-                style="margin-top: 8px"
+                required="true"
               />
 
               <UITextarea
@@ -27,17 +30,20 @@
               <UIInput
                 title="Ссылка на изображение товара"
                 placeholder="Введите ссылку"
+                required="true"
               />
 
               <UIInput
                 title="Цена товара"
                 placeholder="Введите цену"
+                required="true"
               />
 
               <UIButton
                 class="home-card__button"
                 title="Добавить товар"
                 :disabled="true"
+                height="36px"
               />
             </template>
           </UICard>
@@ -100,7 +106,7 @@ export default {
   }
 
   &-selector {
-    margin-right: 32px;
+    margin-right: calc(32px * 2);
   }
 
   &-card {
@@ -112,21 +118,14 @@ export default {
     top: 0;
 
     width: calc(332px - 24px * 2);
-    height: calc(440px - 24px);
 
     padding: 24px;
     margin-right: 8px;
 
     &__button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1 1 0;
-
-      margin-top: calc(24px - 16px);
+      margin-top: 16px;
 
       width: 100%;
-      height: 36px;
     }
   }
 
@@ -134,7 +133,6 @@ export default {
     display: flex;
     flex-flow: row wrap;
     flex: 1 1 0;
-    cursor: pointer;
 
     &__card {
       margin: 8px 8px;
