@@ -44,7 +44,7 @@ export default {
 
     resize: none;
 
-    padding: 10px;
+    padding: 10px 16px;
 
     &::placeholder {
       font-family: Arial, serif;
