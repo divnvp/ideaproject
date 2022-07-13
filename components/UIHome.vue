@@ -49,7 +49,7 @@
         <div class="home-col home-product">
           <UICard
             class="home-product__card home-col"
-            v-for="product in 6"
+            v-for="product in 12"
             :key="product"
           >
             <template #content>
@@ -123,6 +123,9 @@ export default {
   }
 
   &-card {
+    position: sticky;
+    top: 0;
+
     width: 332px;
     height: 440px;
 
