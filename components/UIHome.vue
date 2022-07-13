@@ -40,8 +40,39 @@
       </UICard>
     </div>
 
-    <div class="home-col">
-      <slot class="home-product" name="products" />
+    <div class="home-col home-product">
+      <UICard
+        class="home-product__card home-col"
+        v-for="product in 6"
+        :key="product"
+      >
+        <template #content>
+          <div>
+            <img
+              class="product-card__img"
+              src="../static/img.png"
+              alt="Product image"
+            >
+
+            <div class="product-card__content">
+              <span class="product-card__span home-col">
+                Наименование товара
+              </span>
+
+              <span class="product-card__description home-col">
+                Довольно-таки интересное
+                описание товара в несколько строк.
+                Довольно-таки интересное описание товара
+                в несколько строк
+              </span>
+
+              <span class="product-card__price home-col">
+                10 000 руб.
+              </span>
+            </div>
+          </div>
+        </template>
+      </UICard>
     </div>
   </div>
 </template>
@@ -55,6 +86,8 @@ export default {
 <style lang="scss" scoped>
 .home {
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
   flex-direction: row;
   flex: 1 1 0;
 
@@ -80,6 +113,7 @@ export default {
       margin-top: 16px;
 
       font-size: 10px;
+      color: #49485E;
     }
 
     &__input {
@@ -93,6 +127,7 @@ export default {
 
       &::placeholder {
         font-size: 12px;
+        color: #B4B4B4;
       }
     }
 
@@ -110,6 +145,7 @@ export default {
 
       &::placeholder {
         font-size: 12px;
+        color: #B4B4B4;
       }
     }
 
@@ -127,7 +163,43 @@ export default {
   }
 
   &-product {
-    margin-left: 16px;
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 1 0;
+
+    &__card {
+      margin: 8px 16px;
+
+      width: 332px;
+      height: 423px;
+    }
+  }
+}
+
+.product-card {
+  color: #3F3F3F;
+
+  &__img {
+    width: 100%;
+    height: 200px;
+  }
+
+  &__span {
+    font-size: 20px;
+  }
+
+  &__description {
+    margin-top: 16px;
+    font-size: 16px;
+  }
+
+  &__price {
+    margin-top: 32px;
+    font-size: 24px;
+  }
+
+  &__content {
+    padding: 16px;
   }
 }
 </style>
