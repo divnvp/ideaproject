@@ -1,14 +1,16 @@
 <template>
   <div class="product-card">
-    <UIButton color="#FF8484" class="product-card__button">
-      <template>
-        <img
-          class="product-card__button-img"
-          src="/delete.png"
-          alt="Delete icon"
-        >
-      </template>
-    </UIButton>
+    <div class="product-card__button-container">
+      <UIButton color="#FF8484" class="product-card__button">
+        <template>
+          <img
+            class="product-card__button-img"
+            src="/delete.png"
+            alt="Delete icon"
+          >
+        </template>
+      </UIButton>
+    </div>
 
     <img
       class="product-card__img"
@@ -49,7 +51,17 @@ export default {
   }
 
   &__button {
+    visibility: hidden;
+
+    &-container {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
     position: absolute;
+
+    margin-right: -10px;
+    margin-top: -10px;
 
     z-index: 999;
 
@@ -88,6 +100,10 @@ export default {
 
   &__content {
     padding: 16px;
+  }
+
+  &:hover &__button {
+    visibility: visible;
   }
 }
 </style>
