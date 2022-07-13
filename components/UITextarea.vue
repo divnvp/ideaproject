@@ -41,6 +41,7 @@ export default {
     background: #FFFEFB;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
+    transition: background-color 0.5s linear;
 
     resize: none;
 
@@ -50,6 +51,15 @@ export default {
       font-family: Arial, serif;
       font-size: 12px;
       color: #B4B4B4;
+    }
+
+    &:hover {
+      background-color: #EEEEEE;
+      transition: background-color 0.1s linear;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }
