@@ -6,7 +6,7 @@
           Добавление товара
         </span>
 
-        <UISelector />
+        <UISelector class="home-selector" />
       </div>
 
       <div class="home-row">
@@ -82,80 +82,6 @@
         </div>
       </div>
     </div>
-
-<!--    <div class="home-row">-->
-<!--      <div class="home-col">-->
-<!--        <UICard class="home-card">-->
-<!--          <template #content>-->
-<!--            <span class="home-card__span">Наименование товара</span>-->
-<!--            <input-->
-<!--              class="home-card__input"-->
-<!--              placeholder="Введите наименование товара"-->
-<!--            >-->
-
-<!--            <span class="home-card__span">Описание товара</span>-->
-<!--            <textarea-->
-<!--              class="home-card__textarea"-->
-<!--              placeholder="Введите описание"-->
-<!--            />-->
-
-<!--            <span class="home-card__span">Ссылка на изображение товара</span>-->
-<!--            <input-->
-<!--              class="home-card__input"-->
-<!--              placeholder="Введите ссылку"-->
-<!--            >-->
-
-<!--            <span class="home-card__span">Цена товара</span>-->
-<!--            <input-->
-<!--              class="home-card__input"-->
-<!--              placeholder="Введите цену"-->
-<!--            >-->
-
-<!--            <UIButton-->
-<!--              class="home-card__button"-->
-<!--              title="Добавить товар"-->
-<!--              :disabled="true"-->
-<!--            />-->
-<!--          </template>-->
-<!--        </UICard>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-<!--    <div class="home-col home-product">-->
-<!--      <UICard-->
-<!--        class="home-product__card home-col"-->
-<!--        v-for="product in 6"-->
-<!--        :key="product"-->
-<!--      >-->
-<!--        <template #content>-->
-<!--          <div>-->
-<!--            <img-->
-<!--              class="product-card__img"-->
-<!--              src="../static/img.png"-->
-<!--              alt="Product image"-->
-<!--            >-->
-
-<!--            <div class="product-card__content">-->
-<!--              <span class="product-card__span home-col">-->
-<!--                Наименование товара-->
-<!--              </span>-->
-
-<!--              <span class="product-card__description home-col">-->
-<!--                Довольно-таки интересное-->
-<!--                описание товара в несколько строк.-->
-<!--                Довольно-таки интересное описание товара-->
-<!--                в несколько строк-->
-<!--              </span>-->
-
-<!--              <span class="product-card__price home-col">-->
-<!--                10 000 руб.-->
-<!--              </span>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </template>-->
-<!--      </UICard>-->
-<!--    </div>-->
   </div>
 </template>
 
@@ -190,6 +116,10 @@ export default {
   &-title {
     font-size: 28px;
     color: #3F3F3F;
+  }
+
+  &-selector {
+    margin-right: 32px;
   }
 
   &-card {
