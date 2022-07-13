@@ -1,7 +1,13 @@
 <template>
   <div>
-    <button class="button" :disabled="disabled">
+    <button
+      class="button"
+      :disabled="disabled"
+      :style="{ backgroundColor: color }"
+    >
       {{ title }}
+
+      <slot />
     </button>
   </div>
 </template>
@@ -11,6 +17,7 @@ export default {
   name: "UIButton",
 
   props: {
+    color: { type: String },
     title: { type: String },
     disabled: { type: Boolean },
   }
@@ -23,7 +30,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  font-family: 'Inter', serif;
+  font-family: Arial, serif;
   font-weight: 600;
   font-size: 12px;
 
@@ -33,9 +40,13 @@ export default {
   width: 100%;
   padding: 10px;
 
+  cursor: pointer;
+
   &:disabled {
     background-color: #EEEEEE;
     color: #B4B4B4;
+
+    cursor: default;
   }
 }
 </style>
