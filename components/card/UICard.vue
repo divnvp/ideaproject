@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "ProductCard"
+  name: "UICard"
 }
 </script>
 
