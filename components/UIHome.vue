@@ -13,29 +13,25 @@
         <div class="home-col">
           <UICard class="home-card">
             <template #content>
-              <span class="home-card__span">Наименование товара</span>
-              <input
-                class="home-card__input"
+              <UIInput
+                title="Наименование товара"
                 placeholder="Введите наименование товара"
-              >
+              />
 
-              <span class="home-card__span">Описание товара</span>
-              <textarea
-                class="home-card__textarea"
+              <UITextarea
+                title="Описание товара"
                 placeholder="Введите описание"
               />
 
-              <span class="home-card__span">Ссылка на изображение товара</span>
-              <input
-                class="home-card__input"
+              <UIInput
+                title="Ссылка на изображение товара"
                 placeholder="Введите ссылку"
-              >
+              />
 
-              <span class="home-card__span">Цена товара</span>
-              <input
-                class="home-card__input"
+              <UIInput
+                title="Цена товара"
                 placeholder="Введите цену"
-              >
+              />
 
               <UIButton
                 class="home-card__button"
@@ -53,30 +49,7 @@
             :key="product"
           >
             <template #content>
-              <div>
-                <img
-                  class="product-card__img"
-                  src="../static/img.png"
-                  alt="Product image"
-                >
-
-                <div class="product-card__content">
-                  <span class="product-card__span home-col">
-                    Наименование товара
-                  </span>
-
-                  <span class="product-card__description home-col">
-                    Довольно-таки интересное
-                    описание товара в несколько строк.
-                    Довольно-таки интересное описание товара
-                    в несколько строк
-                  </span>
-
-                  <span class="product-card__price home-col">
-                    10 000 руб.
-                  </span>
-                </div>
-              </div>
+              <ProductCard />
             </template>
           </UICard>
         </div>
@@ -86,8 +59,14 @@
 </template>
 
 <script>
+import UISelector from "./UISelector";
+import UICard from "./card/UICard";
+import UIButton from "./UIButton";
+import ProductCard from "~/components/card/ProductCard";
+
 export default {
-  name: 'NuxtTutorial',
+  name: 'UIHome',
+  components: { ProductCard, UIButton, UICard, UISelector },
 }
 </script>
 
@@ -116,6 +95,7 @@ export default {
   &-title {
     font-size: 28px;
     color: #3F3F3F;
+    margin-bottom: 16px;
   }
 
   &-selector {
@@ -131,53 +111,13 @@ export default {
 
     padding: 24px;
 
-    &__span {
-      margin-top: 16px;
-
-      font-size: 10px;
-      color: #49485E;
-    }
-
-    &__input {
-      margin-top: 4px;
-      padding: 16px;
-
-      border: none;
-      background: #FFFEFB;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
-
-      &::placeholder {
-        font-size: 12px;
-        color: #B4B4B4;
-      }
-    }
-
-    &__textarea {
-      height: 108px;
-
-      border: none;
-      background: #FFFEFB;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
-
-      resize: none;
-
-      padding: 10px;
-
-      &::placeholder {
-        font-size: 12px;
-        color: #B4B4B4;
-      }
-    }
-
     &__button {
       display: flex;
       justify-content: center;
       align-items: center;
       flex: 1 1 0;
 
-      margin-top: 24px;
+      margin-top: calc(24px - 16px);
 
       width: 100%;
       height: 36px;
@@ -188,6 +128,7 @@ export default {
     display: flex;
     flex-flow: row wrap;
     flex: 1 1 0;
+    cursor: pointer;
 
     &__card {
       margin: 8px 16px;
@@ -195,33 +136,6 @@ export default {
       width: 332px;
       height: 423px;
     }
-  }
-}
-
-.product-card {
-  color: #3F3F3F;
-
-  &__img {
-    width: 100%;
-    height: 200px;
-  }
-
-  &__span {
-    font-size: 20px;
-  }
-
-  &__description {
-    margin-top: 16px;
-    font-size: 16px;
-  }
-
-  &__price {
-    margin-top: 32px;
-    font-size: 24px;
-  }
-
-  &__content {
-    padding: 16px;
   }
 }
 </style>
