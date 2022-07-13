@@ -3,15 +3,18 @@
 </template>
 
 <script>
+import UIHome from "../components/UIHome";
+
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  components: { UIHome }
 }
 </script>
 
-<style scoped>
-#app {
+<style>
+body {
   padding: 0;
-  background-color: #E5E5E5;
-  font-family: Source Sans Pro, sans-serif;
+  background-color: #FFFEFB;
+  font-family: Arial, serif;
 }
 </style>
