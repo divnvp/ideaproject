@@ -82,19 +82,20 @@ export default {
   &__span {
     font-size: 20px;
     color: #3F3F3F;
-    font-weight: bold;
+    font-weight: 600;
   }
 
   &__description {
     margin-top: 16px;
     font-size: 16px;
+    font-weight: 400;
     color: #3F3F3F;
   }
 
   &__price {
     margin-top: 32px;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 600;
     color: #3F3F3F;
   }
 
