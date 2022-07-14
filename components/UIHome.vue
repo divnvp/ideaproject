@@ -38,6 +38,7 @@
               <UIInput
                 title="Цена товара"
                 placeholder="Введите цену"
+                type="number"
                 @update="checkRequiredPrice"
                 :required="true"
               />

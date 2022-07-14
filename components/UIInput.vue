@@ -5,6 +5,7 @@
       class="custom-input__input"
       v-model="nameField"
       :placeholder="placeholder"
+      :type="type || ''"
       :style="isFieldRequired ?
       'border: 1px solid tomato' : null"
     >
@@ -25,6 +26,7 @@ export default {
   props: {
     title: String,
     placeholder: String,
+    type: String,
     required: Boolean
   },
 
@@ -97,5 +99,14 @@ export default {
 
     color: #FF8484;
   }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
 }
 </style>
