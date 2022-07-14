@@ -137,7 +137,7 @@ export default {
     &__card {
       margin: 8px 8px;
 
-      width: 332px;
+      width: calc(332px - 32px);
       height: 423px;
     }
   }

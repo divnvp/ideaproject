@@ -88,6 +88,7 @@ export default {
   &__description {
     margin-top: 16px;
     font-size: 16px;
+    line-height: 20px;
     font-weight: 400;
     color: #3F3F3F;
   }
