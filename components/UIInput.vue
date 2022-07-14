@@ -2,14 +2,16 @@
   <div class="custom-input">
     <div class="custom-input__row">
       <span class="custom-input__span">{{ title }}</span>
-      <span class="custom-input__required" v-if="required" />
+      <span
+        class="custom-input__required"
+        v-if="required"
+      />
     </div>
 
     <input
       class="custom-input__input"
       v-model="nameField"
       :placeholder="placeholder"
-      :type="type || ''"
       :style="isFieldRequired ?
       'border: 1px solid tomato' : null"
     >
@@ -35,20 +37,27 @@ export default {
   },
 
   data: () => ({
-    nameField: ""
+    formattedPrice: ""
   }),
 
   computed: {
-    isFieldRequired() {
-      return this.required && !this.nameField.length;
-    }
-  },
+    nameField: {
+      get() {
+        return this.formattedPrice;
+      },
+      set(newValue) {
+        newValue = newValue.toString()
+          .replaceAll(" ", "");
+        this.formattedPrice = newValue
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
-  watch: {
-    "nameField": {
-      handler(newValue) {
         this.$emit("update", newValue);
       }
+    },
+
+    isFieldRequired() {
+      return this.required && !this.nameField.length;
     }
   }
 }
