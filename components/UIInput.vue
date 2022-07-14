@@ -1,6 +1,10 @@
 <template>
   <div class="custom-input">
-    <span class="custom-input__span">{{ title }}</span>
+    <div class="custom-input__row">
+      <span class="custom-input__span">{{ title }}</span>
+      <span class="custom-input__required" v-if="required" />
+    </div>
+
     <input
       class="custom-input__input"
       v-model="nameField"
@@ -57,10 +61,23 @@ export default {
   margin-bottom: 16px;
   width: 284px;
 
+  &__row {
+    display: flex;
+    flex-direction: row;
+  }
+
   &__span {
     font-size: 10px;
     font-weight: 400;
     color: #49485E;
+  }
+
+  &__required {
+    width: 4px;
+    height: 4px;
+
+    background: #FF8484;
+    border-radius: 4px;
   }
 
   &__input {
