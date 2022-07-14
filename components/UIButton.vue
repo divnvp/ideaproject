@@ -44,6 +44,9 @@ export default {
 
   cursor: pointer;
 
+  background-color: #7BAE73;
+  color: white;
+
   &:disabled {
     background-color: #EEEEEE;
     color: #B4B4B4;
