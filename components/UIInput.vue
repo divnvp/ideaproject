@@ -3,8 +3,18 @@
     <span class="custom-input__span">{{ title }}</span>
     <input
       class="custom-input__input"
+      v-model="nameField"
       :placeholder="placeholder"
+      :style="isFieldRequired ?
+      'border: 1px solid tomato' : null"
     >
+
+    <span
+      class="custom-input__hint"
+      v-if="isFieldRequired"
+    >
+      Поле является обязательным
+    </span>
   </div>
 </template>
 
@@ -13,8 +23,27 @@ export default {
   name: "UIInput",
 
   props: {
-    title: { type: String },
-    placeholder: { type: String },
+    title: String,
+    placeholder: String,
+    required: Boolean
+  },
+
+  data: () => ({
+    nameField: ""
+  }),
+
+  computed: {
+    isFieldRequired() {
+      return this.required && !this.nameField.length;
+    }
+  },
+
+  watch: {
+    "nameField": {
+      handler(newValue) {
+        this.$emit("update", newValue);
+      }
+    }
   }
 }
 </script>
@@ -55,6 +84,18 @@ export default {
     &:focus {
       outline: none;
     }
+  }
+
+  &__hint {
+    margin-top: 4px;
+    margin-bottom: -16px;
+
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 10px;
+    letter-spacing: -0.02em;
+
+    color: #FF8484;
   }
 }
 </style>
