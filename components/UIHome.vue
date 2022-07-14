@@ -110,15 +110,15 @@ export default {
       if (newValue.length) {
         this.requiredField.link = newValue;
       } else {
-        this.requiredField.name = "";
+        this.requiredField.link = "";
       }
     },
 
     checkRequiredPrice(newValue) {
-      if (newValue.length) {
+      if (newValue.length || +newValue > 0) {
         this.requiredField.price = newValue;
       } else {
-        this.requiredField.name = "";
+        this.requiredField.price = "";
       }
     }
   }
