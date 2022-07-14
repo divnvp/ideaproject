@@ -19,7 +19,8 @@
               <UIInput
                 title="Наименование товара"
                 placeholder="Введите наименование товара"
-                required="true"
+                @update="checkRequiredName"
+                :required="true"
               />
 
               <UITextarea
@@ -30,19 +31,21 @@
               <UIInput
                 title="Ссылка на изображение товара"
                 placeholder="Введите ссылку"
-                required="true"
+                @update="checkRequiredLink"
+                :required="true"
               />
 
               <UIInput
                 title="Цена товара"
                 placeholder="Введите цену"
-                required="true"
+                @update="checkRequiredPrice"
+                :required="true"
               />
 
               <UIButton
                 class="home-card__button"
                 title="Добавить товар"
-                :disabled="true"
+                :disabled="isButtonDisabled"
                 height="36px"
               />
             </template>
@@ -73,7 +76,51 @@ import ProductCard from "~/components/card/ProductCard";
 
 export default {
   name: 'UIHome',
+
   components: { ProductCard, UIButton, UICard, UISelector },
+
+  data: () => ({
+    requiredField: {
+      name: "",
+      link: "",
+      price: ""
+    },
+    productName: ""
+  }),
+
+  computed: {
+    isButtonDisabled() {
+      const { name, link, price } = this.requiredField;
+
+      return !Boolean(name.length && link.length && price.length);
+    }
+  },
+
+  methods: {
+    checkRequiredName(newValue) {
+      if (newValue.length) {
+        this.requiredField.name = newValue;
+      } else {
+        this.requiredField.name = "";
+      }
+    },
+
+    checkRequiredLink(newValue) {
+      if (newValue.length) {
+        this.requiredField.link = newValue;
+      } else {
+        this.requiredField.name = "";
+      }
+    },
+
+    checkRequiredPrice(newValue) {
+      if (newValue.length) {
+        this.requiredField.price = newValue;
+      } else {
+        this.requiredField.name = "";
+      }
+    }
+  }
 }
 </script>
 
