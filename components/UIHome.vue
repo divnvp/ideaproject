@@ -157,15 +157,15 @@ export default {
 
     addProduct() {
       const { name, description, link, price } = this.field;
-
       this.products.push({ name, description, link, price });
+      
       localStorage.setItem("products", JSON.stringify(this.products));
     },
 
     deleteProduct(product) {
-      console.log("delete")
       const index = this.products.findIndex(pr => pr.name === product.name);
       this.products.splice(index, 1);
+
       localStorage.setItem("products", JSON.stringify(this.products));
     }
   }
