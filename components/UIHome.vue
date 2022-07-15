@@ -26,6 +26,7 @@
               <UITextarea
                 title="Описание товара"
                 placeholder="Введите описание"
+                @update="checkRequiredDescription"
               />
 
               <UIInput
@@ -61,7 +62,10 @@
             :key="product.name"
           >
             <template #content>
-              <ProductCard :product="product" />
+              <ProductCard
+                :product="product"
+                @delete="deleteProduct"
+              />
             </template>
           </UICard>
         </div>
@@ -111,7 +115,7 @@ export default {
   },
 
   created() {
-    if (!localStorage.getItem("products").length) {
+    if (!localStorage.getItem("products") || !localStorage.getItem("products").length) {
       localStorage.setItem("products", JSON.stringify(this.products));
     }
 
@@ -124,6 +128,14 @@ export default {
         this.field.name = newValue;
       } else {
         this.field.name = "";
+      }
+    },
+
+    checkRequiredDescription(newValue) {
+      if (newValue.length) {
+        this.field.description = newValue;
+      } else {
+        this.field.description = "";
       }
     },
 
@@ -147,6 +159,13 @@ export default {
       const { name, description, link, price } = this.field;
 
       this.products.push({ name, description, link, price });
+      localStorage.setItem("products", JSON.stringify(this.products));
+    },
+
+    deleteProduct(product) {
+      console.log("delete")
+      const index = this.products.findIndex(pr => pr.name === product.name);
+      this.products.splice(index, 1);
       localStorage.setItem("products", JSON.stringify(this.products));
     }
   }
