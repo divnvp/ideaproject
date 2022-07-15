@@ -3,6 +3,7 @@
     <span class="custom-textarea__span">{{ title }}</span>
     <textarea
       class="custom-textarea__textarea"
+      v-model="areaModel"
       :placeholder="placeholder"
     />
   </div>
@@ -15,6 +16,17 @@ export default {
   props: {
     title: String,
     placeholder: String
+  },
+
+  computed: {
+    areaModel: {
+      get() {
+        return "";
+      },
+      set(newValue) {
+        this.$emit("update", newValue);
+      }
+    }
   }
 }
 </script>
