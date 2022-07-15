@@ -8,7 +8,9 @@
 
         <UISelector
           class="home-selector"
+          :options="filteredOptions"
           height="36px"
+          @update="filterList"
         />
       </div>
 
@@ -94,16 +96,22 @@ export default {
           "        Довольно-таки интересное описание товара\n" +
           "        в несколько строк",
         link: "",
-        price: "10 000 руб."
+        price: "10 000"
       }
     ],
+    filteredOptions: [
+      { name: "default", text: "По умолчанию" },
+      { name: "min", text: "По цене min" },
+      { name: "max", text: "По цене max" },
+      { name: "name", text: "По наименованию" },
+    ],
+
     field: {
       name: "",
       description: "",
       link: "",
       price: ""
     },
-    productName: ""
   }),
 
   computed: {
@@ -175,6 +183,31 @@ export default {
       this.field.description = "";
       this.field.link = "";
       this.field.price = "";
+    },
+
+    filterList(value) {
+      switch (value) {
+        case "min":
+          this.products = this.products.sort((a, b) =>
+            Number(a.price.replaceAll(" ", "")) -
+            Number(b.price.replaceAll(" ", ""))
+          );
+          break;
+        case "max":
+          this.products = this.products.sort((a, b) =>
+            Number(b.price.replaceAll(" ", "")) -
+            Number(a.price.replaceAll(" ", ""))
+          );
+          break;
+        case "name":
+          this.products = this.products.sort((a, b) =>
+            a.name - b.name
+          );
+          break;
+        case "default":
+        default:
+          this.products = JSON.parse(localStorage.getItem("products"));
+      }
     }
   }
 }
