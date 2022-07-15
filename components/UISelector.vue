@@ -38,7 +38,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .select {
   border: none;
 
@@ -50,5 +50,19 @@ export default {
 
   color: #B4B4B4;
   font-size: 12px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #EEEEEE;
+  }
+
+  &:active {
+    background-color: white;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 </style>

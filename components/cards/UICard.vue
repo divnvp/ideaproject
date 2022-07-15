@@ -18,5 +18,9 @@ export default {
   border-radius: 4px;
   background-color: #FFFEFB;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
+
+  &:hover {
+    background-color: #EEEEEE;
+  }
 }
 </style>

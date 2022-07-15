@@ -109,6 +109,10 @@ export default {
       transition: background-color 0.1s linear;
     }
 
+    &:active {
+      background-color: white;
+    }
+
     &:focus {
       outline: none;
     }
