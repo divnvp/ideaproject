@@ -5,7 +5,7 @@
         <template>
           <img
             class="product-card__button-img"
-            :src="product.link || '/delete.png'"
+            src="/delete.png"
             alt="Delete icon"
           >
         </template>
@@ -14,7 +14,7 @@
 
     <img
       class="product-card__img"
-      src="/img.png"
+      :src="product.link || '/img.png'"
       alt="Product image"
     >
 
@@ -46,6 +46,11 @@ export default {
 
 <style lang="scss" scoped>
 .product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
   &__col {
     display: flex;
     flex-direction: column;
