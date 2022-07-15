@@ -3,6 +3,7 @@
     <button
       class="button"
       :disabled="disabled"
+      @click="$emit('press')"
       :style="{ backgroundColor: color, height: height }"
     >
       {{ title }}
