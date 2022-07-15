@@ -4,7 +4,7 @@
       <UIButton
         class="product-card__button"
         color="#FF8484"
-        @press="$emit('delete', product)"
+        @press="$emit('delete')"
       >
         <template>
           <img
