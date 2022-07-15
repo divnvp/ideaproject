@@ -60,13 +60,13 @@
         <div class="home-col home-product">
           <UICard
             class="home-product__card home-col"
-            v-for="product in products"
-            :key="product.name"
+            v-for="(product, index) in products"
+            :key="index"
           >
             <template #content>
               <ProductCard
                 :product="product"
-                @delete="deleteProduct"
+                @delete="deleteProduct(index)"
               />
             </template>
           </UICard>
@@ -83,6 +83,7 @@ import UIButton from "./UIButton";
 import ProductCard from "~/components/card/ProductCard";
 
 import { sortArray } from "~/factories/sort-array";
+import {getProducts} from "~/mocks/getProducts";
 
 export default {
   name: 'UIHome',
@@ -90,17 +91,7 @@ export default {
   components: { ProductCard, UIButton, UICard, UISelector },
 
   data: () => ({
-    products: [
-      {
-        name: "Наименование товара",
-        description: "Довольно-таки интересное\n" +
-          "        описание товара в несколько строк.\n" +
-          "        Довольно-таки интересное описание товара\n" +
-          "        в несколько строк",
-        link: "",
-        price: "10 000"
-      }
-    ],
+    products: [],
     filteredOptions: [
       { name: "default", text: "По умолчанию" },
       { name: "min", text: "По цене min" },
@@ -125,14 +116,20 @@ export default {
   },
 
   created() {
-    if (!localStorage.getItem("products") || !localStorage.getItem("products").length) {
-      localStorage.setItem("products", JSON.stringify(this.products));
-    }
-
-    this.products = JSON.parse(localStorage.getItem("products"));
+    this.getCustomProducts();
   },
 
   methods: {
+    getCustomProducts() {
+      this.products = getProducts();
+
+      if (!localStorage.getItem("products") || !localStorage.getItem("products").length) {
+        localStorage.setItem("products", JSON.stringify(this.products));
+      }
+
+      this.products = JSON.parse(localStorage.getItem("products"));
+    },
+
     checkRequiredName(newValue) {
       if (newValue.length) {
         this.field.name = newValue;
@@ -173,8 +170,8 @@ export default {
       this.cleanFields();
     },
 
-    deleteProduct(product) {
-      const index = this.products.findIndex(pr => pr.name === product.name);
+    deleteProduct(index) {
+      // const index = this.products.findIndex(pr => pr.name === product.name);
       this.products.splice(index, 1);
 
       localStorage.setItem("products", JSON.stringify(this.products));
