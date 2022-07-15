@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="home-col">
+    <div class="home-col home-justify-content">
       <div class="home-row">
         <span class="home-title">
           Добавление товара
@@ -46,6 +46,7 @@
               <UIButton
                 class="home-card__button"
                 title="Добавить товар"
+                @press="addProduct"
                 :disabled="isButtonDisabled"
                 height="36px"
               />
@@ -56,11 +57,11 @@
         <div class="home-col home-product">
           <UICard
             class="home-product__card home-col"
-            v-for="product in 12"
-            :key="product"
+            v-for="product in products"
+            :key="product.name"
           >
             <template #content>
-              <ProductCard />
+              <ProductCard :product="product" />
             </template>
           </UICard>
         </div>
@@ -81,8 +82,20 @@ export default {
   components: { ProductCard, UIButton, UICard, UISelector },
 
   data: () => ({
-    requiredField: {
+    products: [
+      {
+        name: "Наименование товара",
+        description: "Довольно-таки интересное\n" +
+          "        описание товара в несколько строк.\n" +
+          "        Довольно-таки интересное описание товара\n" +
+          "        в несколько строк",
+        link: "",
+        price: "10 000 руб."
+      }
+    ],
+    field: {
       name: "",
+      description: "",
       link: "",
       price: ""
     },
@@ -91,7 +104,7 @@ export default {
 
   computed: {
     isButtonDisabled() {
-      const { name, link, price } = this.requiredField;
+      const { name, link, price } = this.field;
 
       return !Boolean(name.length && link.length && price.length);
     }
@@ -100,26 +113,32 @@ export default {
   methods: {
     checkRequiredName(newValue) {
       if (newValue.length) {
-        this.requiredField.name = newValue;
+        this.field.name = newValue;
       } else {
-        this.requiredField.name = "";
+        this.field.name = "";
       }
     },
 
     checkRequiredLink(newValue) {
       if (newValue.length) {
-        this.requiredField.link = newValue;
+        this.field.link = newValue;
       } else {
-        this.requiredField.link = "";
+        this.field.link = "";
       }
     },
 
     checkRequiredPrice(newValue) {
       if (newValue.length || +newValue > 0) {
-        this.requiredField.price = newValue;
+        this.field.price = newValue;
       } else {
-        this.requiredField.price = "";
+        this.field.price = "";
       }
+    },
+
+    addProduct() {
+      const { name, description, link, price } = this.field;
+
+      this.products.push({ name, description, link, price });
     }
   }
 }
@@ -143,6 +162,11 @@ export default {
   &-row {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &-justify-content {
     justify-content: space-between;
     width: 100%;
   }
