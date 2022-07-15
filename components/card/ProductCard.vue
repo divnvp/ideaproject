@@ -32,7 +32,7 @@
       </span>
 
       <span class="product-card__price product-card__col">
-        {{ product.price }}
+        {{ product.price }} руб.
       </span>
     </div>
   </div>
