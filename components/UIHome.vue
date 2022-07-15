@@ -201,7 +201,7 @@ export default {
           break;
         case "name":
           this.products = this.products.sort((a, b) =>
-            a.name - b.name
+            a.name.localeCompare(b.name)
           );
           break;
         case "default":
