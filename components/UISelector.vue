@@ -2,9 +2,16 @@
   <div>
     <select
       class="select"
+      v-model="selectedOption"
       :style="{ height }"
     >
-      <option selected>По умолчанию</option>
+      <option
+        v-for="option in options"
+        :key="option.name"
+        :value="option.name"
+      >
+        {{ option.text }}
+      </option>
     </select>
   </div>
 </template>
@@ -14,7 +21,19 @@ export default {
   name: "UISelector",
 
   props: {
+    options: { type: Array, required: true },
     height: String
+  },
+
+  computed: {
+    selectedOption: {
+      get() {
+        return this.options[0].name;
+      },
+      set(newValue) {
+        this.$emit("update", newValue);
+      }
+    }
   }
 }
 </script>
