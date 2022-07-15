@@ -24,7 +24,7 @@ export default {
     required: Boolean,
     height: String
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

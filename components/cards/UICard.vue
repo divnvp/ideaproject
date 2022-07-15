@@ -7,7 +7,7 @@
 <script>
 export default {
   name: "UICard"
-}
+};
 </script>
 
 <style lang="scss" scoped>

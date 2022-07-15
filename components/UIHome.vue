@@ -78,15 +78,15 @@
 
 <script>
 import UISelector from "./UISelector";
-import UICard from "./card/UICard";
+import UICard from "./cards/UICard";
 import UIButton from "./UIButton";
-import ProductCard from "~/components/card/ProductCard";
+import ProductCard from "~/components/cards/ProductCard";
 
 import { sortArray } from "~/factories/sort-array";
-import {getProducts} from "~/mocks/getProducts";
+import { getProducts } from "~/mocks/getProducts";
 
 export default {
-  name: 'UIHome',
+  name: "UIHome",
 
   components: { ProductCard, UIButton, UICard, UISelector },
 
@@ -111,7 +111,12 @@ export default {
     isButtonDisabled() {
       const { name, link, price } = this.field;
 
-      return !Boolean(name.length && link.length && price.length);
+      return !(name.length && link.length && price.length);
+    },
+
+    isProductsExist() {
+      return localStorage.getItem("products") ||
+        localStorage.getItem("products").length;
     }
   },
 
@@ -123,7 +128,7 @@ export default {
     getCustomProducts() {
       this.products = getProducts();
 
-      if (!localStorage.getItem("products") || !localStorage.getItem("products").length) {
+      if (!this.isProductsExist) {
         localStorage.setItem("products", JSON.stringify(this.products));
       }
 
@@ -179,7 +184,7 @@ export default {
       return value.length ? value : "";
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

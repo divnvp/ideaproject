@@ -60,7 +60,7 @@ export default {
       return this.required && !this.nameField.length;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
