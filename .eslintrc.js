@@ -17,7 +17,7 @@ module.exports = {
   "rules": {
     "indent": [
       "error",
-      4
+      2
     ],
     "linebreak-style": [
       "error",
@@ -31,13 +31,7 @@ module.exports = {
       "error",
       "always"
     ],
-    "max-len": [
-      "error", {
-        "code": 80,
-        "template": 80,
-        "tabWidth": 2,
-        "comments": 80,
-      }
-    ]
+    "max-len": ["error", { "code": 80 }],
+    "object-curly-spacing": ["error", "always"]
   }
 };
