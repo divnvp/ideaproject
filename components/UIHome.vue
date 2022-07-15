@@ -28,7 +28,7 @@
               <UITextarea
                 title="Описание товара"
                 placeholder="Введите описание"
-                @update="checkRequiredDescription"
+                @update="checkDescription"
               />
 
               <UIInput
@@ -81,6 +81,8 @@ import UISelector from "./UISelector";
 import UICard from "./card/UICard";
 import UIButton from "./UIButton";
 import ProductCard from "~/components/card/ProductCard";
+
+import { sortArray } from "~/factories/sort-array";
 
 export default {
   name: 'UIHome',
@@ -139,7 +141,7 @@ export default {
       }
     },
 
-    checkRequiredDescription(newValue) {
+    checkDescription(newValue) {
       if (newValue.length) {
         this.field.description = newValue;
       } else {
@@ -186,28 +188,7 @@ export default {
     },
 
     filterList(value) {
-      switch (value) {
-        case "min":
-          this.products = this.products.sort((a, b) =>
-            Number(a.price.replaceAll(" ", "")) -
-            Number(b.price.replaceAll(" ", ""))
-          );
-          break;
-        case "max":
-          this.products = this.products.sort((a, b) =>
-            Number(b.price.replaceAll(" ", "")) -
-            Number(a.price.replaceAll(" ", ""))
-          );
-          break;
-        case "name":
-          this.products = this.products.sort((a, b) =>
-            a.name.localeCompare(b.name)
-          );
-          break;
-        case "default":
-        default:
-          this.products = JSON.parse(localStorage.getItem("products"));
-      }
+      sortArray(value, this.products);
     }
   }
 }
