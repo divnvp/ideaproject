@@ -5,7 +5,7 @@
         <template>
           <img
             class="product-card__button-img"
-            src="/delete.png"
+            :src="product.link || '/delete.png'"
             alt="Delete icon"
           >
         </template>
@@ -20,18 +20,15 @@
 
     <div class="product-card__content">
       <span class="product-card__span product-card__col">
-        Наименование товара
+        {{ product.name }}
       </span>
 
       <span class="product-card__description product-card__col">
-        Довольно-таки интересное
-        описание товара в несколько строк.
-        Довольно-таки интересное описание товара
-        в несколько строк
+        {{ product.description }}
       </span>
 
       <span class="product-card__price product-card__col">
-        10 000 руб.
+        {{ product.price }}
       </span>
     </div>
   </div>
@@ -39,7 +36,11 @@
 
 <script>
 export default {
-  name: "ProductCard"
+  name: "ProductCard",
+
+  props: {
+    product: { type: Object, required: true }
+  }
 }
 </script>
 
