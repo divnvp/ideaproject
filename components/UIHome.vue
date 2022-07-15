@@ -110,6 +110,14 @@ export default {
     }
   },
 
+  created() {
+    if (!localStorage.getItem("products").length) {
+      localStorage.setItem("products", JSON.stringify(this.products));
+    }
+
+    this.products = JSON.parse(localStorage.getItem("products"));
+  },
+
   methods: {
     checkRequiredName(newValue) {
       if (newValue.length) {
@@ -139,6 +147,7 @@ export default {
       const { name, description, link, price } = this.field;
 
       this.products.push({ name, description, link, price });
+      localStorage.setItem("products", JSON.stringify(this.products));
     }
   }
 }
