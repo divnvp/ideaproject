@@ -131,35 +131,19 @@ export default {
     },
 
     checkRequiredName(newValue) {
-      if (newValue.length) {
-        this.field.name = newValue;
-      } else {
-        this.field.name = "";
-      }
+      this.field.name = this.getExistValue(newValue);
     },
 
     checkDescription(newValue) {
-      if (newValue.length) {
-        this.field.description = newValue;
-      } else {
-        this.field.description = "";
-      }
+      this.field.description = this.getExistValue(newValue);
     },
 
     checkRequiredLink(newValue) {
-      if (newValue.length) {
-        this.field.link = newValue;
-      } else {
-        this.field.link = "";
-      }
+      this.field.link = this.getExistValue(newValue);
     },
 
     checkRequiredPrice(newValue) {
-      if (newValue.length || +newValue > 0) {
-        this.field.price = newValue;
-      } else {
-        this.field.price = "";
-      }
+      this.field.price = this.getExistValue(newValue);
     },
 
     addProduct() {
@@ -171,7 +155,6 @@ export default {
     },
 
     deleteProduct(index) {
-      // const index = this.products.findIndex(pr => pr.name === product.name);
       this.products.splice(index, 1);
 
       localStorage.setItem("products", JSON.stringify(this.products));
@@ -190,6 +173,10 @@ export default {
       } else {
         sortArray(value, this.products);
       }
+    },
+
+    getExistValue(value) {
+      return value.length ? value : "";
     }
   }
 }
