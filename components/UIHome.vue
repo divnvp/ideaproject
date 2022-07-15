@@ -188,7 +188,11 @@ export default {
     },
 
     filterList(value) {
-      sortArray(value, this.products);
+      if (value === "default") {
+        this.products = JSON.parse(localStorage.getItem("products"));
+      } else {
+        sortArray(value, this.products);
+      }
     }
   }
 }

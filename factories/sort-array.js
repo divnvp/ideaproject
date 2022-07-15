@@ -17,9 +17,6 @@ export function sortArray(value, array) {
         a.name.localeCompare(b.name)
       );
       break;
-    case "default":
-    default:
-      array = JSON.parse(localStorage.getItem("products"));
   }
 
   return array;
