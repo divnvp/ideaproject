@@ -158,8 +158,9 @@ export default {
     addProduct() {
       const { name, description, link, price } = this.field;
       this.products.push({ name, description, link, price });
-      
+
       localStorage.setItem("products", JSON.stringify(this.products));
+      this.cleanFields();
     },
 
     deleteProduct(product) {
@@ -167,6 +168,13 @@ export default {
       this.products.splice(index, 1);
 
       localStorage.setItem("products", JSON.stringify(this.products));
+    },
+
+    cleanFields() {
+      this.field.name = "";
+      this.field.description = "";
+      this.field.link = "";
+      this.field.price = "";
     }
   }
 }
