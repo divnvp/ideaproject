@@ -1,7 +1,11 @@
 <template>
   <div class="product-card">
     <div class="product-card__button-container">
-      <UIButton color="#FF8484" class="product-card__button">
+      <UIButton
+        class="product-card__button"
+        color="#FF8484"
+        @press="$emit('delete', product)"
+      >
         <template>
           <img
             class="product-card__button-img"
