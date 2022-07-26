@@ -1,3 +1,5 @@
+"use strict";
+
 <template>
   <div class="custom-input">
     <div class="custom-input__row">

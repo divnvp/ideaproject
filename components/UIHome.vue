@@ -1,3 +1,5 @@
+"use strict";
+
 <template>
   <div class="home">
     <div class="home-col home-justify-content">
@@ -115,8 +117,7 @@ export default {
     },
 
     isProductsExist() {
-      return localStorage.getItem("products") ||
-        localStorage.getItem("products").length;
+      return localStorage.getItem("products");
     }
   },
 
@@ -181,7 +182,7 @@ export default {
     },
 
     getExistValue(value) {
-      return value.length ? value : "";
+      return value && value.length ? value : "";
     }
   }
 };
